@@ -1,0 +1,24 @@
+extends index
+
+block scripts
+	script(src='/js/jquery.min.js')
+	script(src='/js/bootstrap.js')
+	script(src='/js/bootstrap.min.js')
+	script(src='/js/viewer.js')
+
+block content
+	div#unitContainer
+		#photoContainer
+			img#photo
+		#infoContainer
+			div#info
+				div.name
+					span.label Name:
+				div.site
+					span.label Site:
+				div.date
+					span.label Date:
+				div.material
+					span.label Material:
+				div.description
+					span.label Description:

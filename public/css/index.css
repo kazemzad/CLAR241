@@ -1,0 +1,88 @@
+#description {
+    width: 450px;
+    height: 200px;
+}
+
+.nav {
+    font-family: 'Poiret One';
+}
+
+.navbar .brand {
+    color: #ccc;
+    font-family: Poiret One;
+    font-size: 35px;
+    padding: 0;
+    margin-left: 10px;
+}
+
+#submitButton {
+    display: block;
+}
+
+#addContent {
+    width: 500px;
+    margin: auto;
+}
+#addContent input {
+    display: block;
+    width: 150px;
+    margin: 7px 0;
+}
+
+#addContent textarea {
+    display: block;
+}
+
+@font-face {
+  font-family: 'Poiret One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Poiret One'), local('PoiretOne-Regular'), url(http://themes.googleusercontent.com/static/fonts/poiretone/v2/HrI4ZJpJ3Fh0wa5ofYMK8b3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+
+#bodyContainer {
+    margin-top: 65px;
+}
+
+#unitContainer {
+    width: 800px;
+    position: relative;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#photo {
+    float: left;
+}
+
+#photoContainer {
+    width: 350px;
+}
+
+#infoContainer {
+    width: 450px;
+    float: left;
+}
+#info {
+    height: 400px;
+    float: left;
+    padding-left: 35px;
+}
+
+span.label:hover {
+    font-size: 150%;
+}
+
+p {
+    display: inline;
+}
+
+.editButton {
+    width: 65px;
+}
+
+.textarea {
+    width: 300px;
+    height: 175px;
+}
