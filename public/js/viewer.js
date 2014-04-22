@@ -1,19 +1,21 @@
 var images = new Array;
 var index = 0;
+var carolinaBlue = '#56A0D3';
 
 $(document).ready(function() {
 	getArray();
 
 	$('body').keydown(function(event) {
-		//Left arrow click
-		if(event.keyCode == 37) {
-			index--;
+		//Up arrow click
+		if(event.keyCode == 38) {
+			index++;
 			console.log('Index is now ' + index);
 			nextImage();
 		}
-		//Right arrow click
-		if(event.keyCode == 39) {
-			index++;
+		//down arrow click
+		if(event.keyCode == 40) {
+			if(index <= '0') return;
+			index--;
 			nextImage();
 			console.log('Index is now ' + index);
 		}
@@ -39,6 +41,17 @@ $(document).ready(function() {
 		edit(label,inputVal);
 	});
 
+	$(document).on('click', '.editDescriptionButton', function(event) {
+		var event = $(event.target);
+		var parent = event.parent();
+		var textarea = $('#textarea').val();
+		event.remove();
+		$('#textarea').remove();
+		parent.val(textarea);
+		parent.find('p').html(textarea);
+		edit('description',textarea);
+	});
+
 	$(document).on('click', 'span.label', function() {
 		var parent = $(event.target).parent().parent();
 		var placeholder = parent.find('p').text();
@@ -47,16 +60,27 @@ $(document).ready(function() {
 		parent.find('p').text('');
 		console.log('Label is ' + label);
 		if(label == 'description') {
-			parent.append('<textarea></textarea>');
-			parent.find('textarea class="textarea">').val(placeholder);
+			var existingInput = parent.find('#textarea');
+			if(typeof(existingInput) != 'undefined') {
+				console.log('Textarea detected!');
+				//return;
+			}
+			parent.append('<textarea id="textarea"></textarea>');
+			parent.find('#textarea').val(placeholder);
+			parent.append('<button class="editDescriptionButton">Submit</button>');
 		}
 		else {
+			var existingInput = parent.find('.editInput');
+			if(typeof(existingInput) != 'undefined') {
+				console.log('Input detected!');
+				//return;
+			}
 			var input = $('<input class="editInput" type="text"></input>');
 			input.val(placeholder);
 			parent.append(input);
-			//console.log('Input val is ' + input.val() + ' yet placeholder is ' + placeholder);
+			parent.append('<button class="editButton" name="Change" value="Change">Submit</button>');	
 		}	
-		parent.append('<button class="editButton" name="Change" value="Change">Submit</button>');	
+		
 	});
 
 
@@ -85,6 +109,8 @@ function getArray() {
 		url: '/images',
 		success: function(data) {
 			images = data.array;
+			console.log('Array 0 is ' + images[0]);
+			nextImage();
 		},
 		error: function() {
 			console.log('Error retrieving images.');
@@ -92,14 +118,15 @@ function getArray() {
 	});
 }
 
-function nextImage(direction) {
+function nextImage() {
 	clearData();
 	var data = images[index];
+	console.log('Data is' + data);
 	var unitContainer = $('#unitContainer');
 	var photo = $('#photo');
 	var info = $('#info');
 	
-	photo.attr('src', 'images/' + data.filename);
+	photo.attr('src', 'images/exam3/' + data.filename);
 	$('.name').append('<p>' + data.name + '</p>');
 	$('.material').append('<p>' + data.material + '</p>');
 	$('.period').append('<p>' + data.period + '</p>');
@@ -112,7 +139,7 @@ function clearData() {
 	$('.name').html('<span class="label"><b>Name: </b></span>');
 	$('.date').html('<span class="label"><b>Date: </b></span>');
 	$('.material').html('<span class="label"><b>Material: </b></span>');
-	$('.period').html('span class="label"><b>Period: </b></span>');
+	$('.period').html('<span class="label"><b>Period: </b></span>');
 	$('.site').html('<span class="label"><b>Site: </b></span>');
 	$('.description').html('<span class="label"><b>Description: </b></span>');
 }

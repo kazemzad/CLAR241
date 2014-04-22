@@ -60,13 +60,21 @@
     width: 350px;
 }
 
-#infoContainer {
+#infoContainer, #testContainer, #solutionContainer {
     width: 450px;
     float: left;
 }
+
+#solutionContainer {
+    display: none;
+}
+
+#testContainer, #solutionContainer {
+    padding-left: 35px;
+}
+
 #info {
     height: 400px;
-    float: left;
     padding-left: 35px;
 }
 
@@ -82,7 +90,46 @@ p {
     width: 65px;
 }
 
-.textarea {
+#textarea {
     width: 300px;
     height: 175px;
+}
+
+#descInput {
+    height: 175px;
+}
+.descriptionInput {
+    width: 300px;
+    height: 175px;
+}
+
+.info {
+    display: inline-block;
+}
+
+.text {
+    display:inline-block;
+}
+
+.labelContainer {
+    width: 80px;
+    display: inline-block;
+}
+.text {
+    width: 120px;
+}
+
+.dateInput {
+    width: 150px;
+}
+
+.timeSolution {
+    display: none;
+}
+
+#timeContainer {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top:60px;
 }

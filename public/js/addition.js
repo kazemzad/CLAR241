@@ -26,7 +26,7 @@ function addContent() {
 		data: {name: name, filename: filename, site: site, period: period, date: date, material: material, description: description},
 		success: function(data) {
 			console.log('Successfully sent.');
-			clearForm();	
+			clearForm(site,period,date,material);	
 		},
 		error: function() {
 			alert('Error sending data.');
@@ -34,12 +34,12 @@ function addContent() {
 	});
 };
 
-function clearForm() {
+function clearForm(site,period,date,material) {
 	$('#name').val('');
 	$('#filename').val('');
-	$('#site').val('');
-	$('#period').val('');
-	$('#date').val('');
-	$('#material').val('');
+	$('#site').val(site);
+	$('#period').val(period);
+	$('#date').val(date);
+	$('#material').val(material);
 	$('#description').val('');
 }
